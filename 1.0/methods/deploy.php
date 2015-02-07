@@ -24,7 +24,6 @@ $deploy = array(
 
 if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repository']['name'] ] ) ){
 
-	// yup - 
 	//do the git
 	if ( basename( $data['ref'] ) === $deploy[ $data['repository']['name'] ]['branch'] ){
 
@@ -33,7 +32,7 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 			$output = implode("\r\n", $output );
 		}
 		// log stuff
-		//error_log( $output );
+		error_log( $output );
 
 		return array('success' => true, 'data' => $data, 'log' => $output );
 
