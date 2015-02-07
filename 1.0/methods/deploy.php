@@ -11,8 +11,14 @@ $auths = array(
 
 // allowed deployments
 $deploy = array(
-	'calderawp-api'			=>	'/var/api/calderawp-api',
-	'cwp-theme'				=>	'/var/sites/calderawp.com/wp-content/themes/cwp-theme',
+	'calderawp-api'	=>	array(
+		'path'			=>	'/var/api/calderawp-api',
+		'branch'		=>	'1.0',
+	),
+	'cwp-theme'		=>	array(
+		'path'			=>	'/var/sites/calderawp.com/wp-content/themes/cwp-theme',
+		'branch'		=>	'master'
+	)
 );
 
 
@@ -20,15 +26,19 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 
 	// yup - 
 	//do the git
-	exec( "git -C " . $deploy[ $data['repository']['name'] ] . " pull", $output );
-	if( is_array( $output ) ){
-		$output = implode("\r\n", $output );
-	}
-	// log stuff
-	//error_log( $output );
+	if ( $data['ref'] === $data['base_ref'] ){
 
-	return array('success' => true, 'data' => $data, 'log' => $output );
+		exec( "git -C " . $deploy[ $data['repository']['name'] ] . " pull", $output );
+		if( is_array( $output ) ){
+			$output = implode("\r\n", $output );
+		}
+		// log stuff
+		//error_log( $output );
+
+		return array('success' => true, 'data' => $data, 'log' => $output );
+
+	}
 }
 
 
-return array( 'success' => false, 'error' => 'Not authorized or repo not listed.' );
+return array( 'success' => false, 'data' => $data );
