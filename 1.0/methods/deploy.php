@@ -22,7 +22,7 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 	// yup - 
 	//do the git
 
-	exec( "git -C " . $deploy[ $data['repository']['name'] ] . " pull", $output );
+	passthru( "git -C " . $deploy[ $data['repository']['name'] ] . " pull", $output );
 	
 	error_log( implode("\r", $output ) );
 
