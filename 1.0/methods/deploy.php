@@ -1,7 +1,6 @@
 <?php
 
 /// DEPLOY method
-
 $data = file_get_contents( 'php://input' );
 
 ob_start();
