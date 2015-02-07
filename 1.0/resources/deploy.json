@@ -13,7 +13,7 @@
 		},
 		"methods"	:	{
 			"POST"	:	{
-				"file": "domains/create-domain.php"
+				"file": "methods/deploy.php"
 			}
 		}
 	}
