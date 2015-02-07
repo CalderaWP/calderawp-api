@@ -1,6 +1,6 @@
 <?php
 
-/// DEPLOY method
+/// DEPLOY method - ready
 $data = json_decode( file_get_contents( 'php://input' ), true );
 
 ob_start();
