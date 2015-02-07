@@ -2,7 +2,6 @@
 	{
 		"name"		:	"pull",
 		"desc"		:	"git pull",
-		"debug"		:	false,
 		"headers"	:	{
 			"Content-Type"					:	"application/json",
 			"Accept-Encoding"				:	"compress, gzip",
@@ -13,9 +12,6 @@
 		},
 		"methods"	:	{
 			"POST"	:	{
-				"file": "methods/deploy.php"
-			},
-			"GET"	:	{
 				"file": "methods/deploy.php"
 			}
 		}
