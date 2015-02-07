@@ -26,9 +26,9 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 
 	// yup - 
 	//do the git
-	if ( $data['ref'] === $data['base_ref'] ){
+	if ( basename( $data['ref'] ) === $deploy[ $data['repository']['name'] ]['branch'] ){
 
-		exec( "git -C " . $deploy[ $data['repository']['name'] ] . " pull", $output );
+		exec( "git -C " . $deploy[ $data['repository']['name'] ]['path'] . " pull", $output );
 		if( is_array( $output ) ){
 			$output = implode("\r\n", $output );
 		}
