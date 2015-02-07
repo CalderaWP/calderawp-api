@@ -24,7 +24,8 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 
 	exec( "git -C " . $deploy[ $data['repository']['name'] ] . " pull", $output );
 	
-	error_log( $output );
+	error_log( implode("\r", $output ) );
+
 	return array('success' => true );
 }
 
