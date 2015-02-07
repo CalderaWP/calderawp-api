@@ -31,4 +31,4 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 }
 
 
-return array( 'success' => false );
+return array( 'success' => false, 'error' => 'Not authorized or repo not listed.' );

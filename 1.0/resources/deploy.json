@@ -14,9 +14,6 @@
 		"methods"	:	{
 			"POST"	:	{
 				"file": "methods/deploy.php"
-			},
-			"GET"	:	{
-				"file": "methods/deploy.php"
 			}
 		}
 	}
