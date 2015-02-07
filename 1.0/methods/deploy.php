@@ -13,7 +13,7 @@ $auths = array(
 $deploy = array(
 	'calderawp-api'	=>	array(
 		'path'			=>	'/var/api/calderawp-api',
-		'branch'		=>	'1.0',
+		'branch'		=>	'master',
 	),
 	'cwp-theme'		=>	array(
 		'path'			=>	'/var/sites/calderawp.com/wp-content/themes/cwp-theme',
