@@ -27,7 +27,7 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 		$output = implode("\r\n", $output );
 	}
 
-	error_log( implode("\r", $output ) );
+	error_log( $output );
 
 	return array('success' => true, 'data' => $data );
 }
