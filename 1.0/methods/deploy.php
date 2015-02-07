@@ -1,11 +1,8 @@
 <?php
 
+// deployment
 
 
-ob_start();
-var_dump( $_POST );
-$out = ob_get_clean();
-
-error_log( $out );
+error_log( print_r( $_REQUEST ) );
 
 return array('success' => true );
