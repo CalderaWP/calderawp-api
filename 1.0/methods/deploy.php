@@ -24,10 +24,10 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 	if( is_array( $output ) ){
 		$output = implode("\r\n", $output );
 	}
+	// log stuff
+	//error_log( $output );
 
-	error_log( $output );
-
-	return array('success' => true, 'data' => $data, 'log' => $output, 'headers' => $_SERVER );
+	return array('success' => true, 'data' => $data, 'log' => $output );
 }
 
 
