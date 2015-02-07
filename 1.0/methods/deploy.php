@@ -9,7 +9,6 @@ $auths = array(
 	'Desertsnowman',
 );
 
-
 // allowed deployments
 $deploy = array(
 	'calderawp-api'			=>	'/var/api/calderawp-api',
@@ -28,7 +27,7 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 
 	error_log( $output );
 
-	return array('success' => true, 'data' => $data, 'log' => $output );
+	return array('success' => true, 'data' => $data, 'log' => $output, 'headers' => $_SERVER );
 }
 
 
