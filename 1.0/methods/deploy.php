@@ -21,14 +21,12 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 
 	// yup - 
 	//do the git
-
-	passthru( "git -C " . $deploy[ $data['repository']['name'] ] . " pull", $output );
+	exec( "git -C " . $deploy[ $data['repository']['name'] ] . " pull", $output );
 	
 	error_log( implode("\r", $output ) );
 
 	return array('success' => true );
 }
-
 
 
 return array( 'success' => false );
