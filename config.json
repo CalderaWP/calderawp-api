@@ -1,0 +1,8 @@
+{
+	"version"	: "1.0",
+	"debug"		: true,
+	"libraries" : [
+		"libs/medoo.min.php",
+		"libs/utils.php"
+	]
+}
