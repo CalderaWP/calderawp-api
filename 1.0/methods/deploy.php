@@ -3,6 +3,7 @@
 /// DEPLOY method - ready
 $data = json_decode( file_get_contents( 'php://input' ), true );
 
+error_log( 'Starting deploy call' );
 
 // authorized senders
 $auths = array(
