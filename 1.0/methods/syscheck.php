@@ -1,8 +1,8 @@
 <?php
 
 $out = array(
-	'server'	=>	$_SERVER,
-	'request'	=>	$_REQUEST
+	'ip'	=>	$_SERVER['REMOTE_ADDR'],
+	'server'	=>	$_SERVER['SERVER_NAME']
 );
 
 return $out;
