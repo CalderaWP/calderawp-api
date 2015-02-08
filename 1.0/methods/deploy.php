@@ -25,6 +25,7 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 
 	//do the git
 	if ( !empty( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) ){
+		error_log( 'Deploying ' . $data['repository']['name'] . ' to ' . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] );
 
 		exec( "git -C " . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] . " pull", $output );
 		if( is_array( $output ) ){
