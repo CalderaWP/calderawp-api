@@ -7,7 +7,7 @@ $data = json_decode( file_get_contents( 'php://input' ), true );
 // authorized senders
 $auths = array(
 	'Desertsnowman',
-	'Shelob9'
+	'Shelob9',
 );
 
 // allowed deployments
