@@ -12,12 +12,11 @@ $auths = array(
 // allowed deployments
 $deploy = array(
 	'calderawp-api'	=>	array(
-		'path'			=>	'/var/api/calderawp-api',
-		'branch'		=>	'master',
+		'master'		=>	'/var/api/calderawp-api',
 	),
 	'cwp-theme'		=>	array(
-		'path'			=>	'/var/sites/calderawp.com/wp-content/themes/cwp-theme',
-		'branch'		=>	'master'
+		'master'		=>	'/var/sites/calderawp.com/wp-content/themes/cwp-theme',
+		'staging'		=>	'/var/www/wp-content/themes/cwp-theme/'
 	)
 );
 
@@ -25,9 +24,9 @@ $deploy = array(
 if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repository']['name'] ] ) ){
 
 	//do the git
-	if ( basename( $data['ref'] ) === $deploy[ $data['repository']['name'] ]['branch'] ){
+	if ( !empty( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) ){
 
-		exec( "git -C " . $deploy[ $data['repository']['name'] ]['path'] . " pull", $output );
+		exec( "git -C " . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] . " pull", $output );
 		if( is_array( $output ) ){
 			$output = implode("\r\n", $output );
 		}
