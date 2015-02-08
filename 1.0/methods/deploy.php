@@ -16,8 +16,12 @@ $deploy = array(
 	),
 	'cwp-theme'		=>	array(
 		'master'		=>	'/var/sites/calderawp.com/wp-content/themes/cwp-theme',
-		'staging'		=>	'/var/www/wp-content/themes/cwp-theme/'
-	)
+		'staging'		=>	'/var/www/wp-content/themes/cwp-theme/',
+	),
+	'caldera-forms'	=>	array(
+		'current-stable'	=>	'/var/sites/calderawp.com/wp-content/plugins/caldera-forms',
+		'1.1.x'				=>	'/var/www/wp-content/plugins/caldera-forms',
+	),
 );
 
 
