@@ -30,8 +30,8 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 
 	//do the git
 	if ( !empty( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) ){
-		error_log( 'Deploying ' . $data['repository']['name'] . ' to ' . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] );
 
+		error_log( 'Deploying ' . $data['repository']['name'] . ' to ' . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] );
 		exec( "git -C " . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] . " pull", $output );
 		if( is_array( $output ) ){
 			$output = implode("\r\n", $output );
@@ -41,6 +41,8 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 
 		return array('success' => true, 'data' => $data, 'log' => $output );
 
+	}else{
+		error_log( 'Deploy Not set on ' . $data['repository']['name'] . ' for branch ' . basename( $data['ref'] ) );
 	}
 }
 
