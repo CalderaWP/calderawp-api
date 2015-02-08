@@ -15,5 +15,21 @@
 				"file": "methods/deploy.php"
 			}
 		}
+	},{
+		"name"		:	"syscheck",
+		"desc"		:	"system check",
+		"headers"	:	{
+			"Content-Type"					:	"application/json",
+			"Accept-Encoding"				:	"compress, gzip",
+			"ETag"							:	"%hash=md5%",
+			"Vary"							:	"Accept-Encoding",
+			"X-Powered-By"					:	"Falcon/1.0.1",
+			"Access-Control-Allow-Origin"	:	"*"
+		},
+		"methods"	:	{
+			"GET"	:	{
+				"file": "methods/syscheck.php"
+			}
+		}
 	}
 ]
