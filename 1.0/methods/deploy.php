@@ -27,6 +27,7 @@ $deploy = array(
 );
 
 
+
 if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repository']['name'] ] ) ){
 
 	//do the git
