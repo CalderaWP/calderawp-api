@@ -5,7 +5,7 @@ function create_task( $task_name, $task_data = null, $args = array() ){
 
 
 	if( is_array( $task_data ) && !empty( $task_data['task'] ) ){
-		console_log( "ERROR: task is a reserved word; Task creation failed" );
+		error_log( "ERROR: task is a reserved word; Task creation failed" );
 		return false;
 	}
 
@@ -34,7 +34,7 @@ function create_task( $task_name, $task_data = null, $args = array() ){
 	fclose( $task_file );
 	// rename stops create event to happen before completed writing data.
 	rename( '/manager/tmp/' . $file_name, '/manager/schedule/' . $file_name );
-	console_log( "Task '" . $file_name . "' scheduled." );
+	error_log( "Task '" . $file_name . "' scheduled." );
 	return $task_id;
 }
 
