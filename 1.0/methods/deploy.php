@@ -26,6 +26,10 @@ $deploy = array(
 	),
 );
 
+$composers = array(
+	'/var/sites/stage.calderawp.com/wp-content/themes/cwp-theme',
+	'/var/sites/stage.calderawp.com/wp-content/themes/cwp-theme'
+);
 
 
 if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repository']['name'] ] ) ){
@@ -40,6 +44,16 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 		}
 		// log stuff
 		error_log( $output );
+
+		// has composer?
+		if( in_array( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ], $composers) ){
+			// run composer
+			$log = array();
+			exec( "composer --no-ansi -n update -d " . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ], $log );
+			$outlog = implode("\r\n", (array) $log );
+			error_log( $outlog );
+
+		}
 
 		return array('success' => true, 'data' => $data, 'log' => $output );
 
