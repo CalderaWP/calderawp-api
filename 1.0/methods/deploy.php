@@ -20,7 +20,7 @@ $deploy = array(
 		'master'		=>	'/var/sites/calderawp.com/wp-content/themes/cwp-theme',
 		'staging'		=>	'/var/sites/stage.calderawp.com/wp-content/themes/cwp-theme',
 	),
-	'caldera-forms'	=>	array(
+	'Caldera-Forms'	=>	array(
 		'current-stable'	=>	'/var/sites/calderawp.com/wp-content/plugins/caldera-forms',
 		'1.1.x'				=>	'/var/sites/stage.calderawp.com/wp-content/plugins/caldera-forms',
 	),
