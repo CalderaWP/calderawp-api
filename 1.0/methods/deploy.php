@@ -26,9 +26,10 @@ $deploy = array(
 	),
 );
 
+//
 $composers = array(
 	'/var/sites/stage.calderawp.com/wp-content/themes/cwp-theme',
-	'/var/sites/stage.calderawp.com/wp-content/themes/cwp-theme'
+	'/var/sites/calderawp.com/wp-content/themes/cwp-theme'
 );
 
 
