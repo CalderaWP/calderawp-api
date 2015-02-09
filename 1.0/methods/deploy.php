@@ -37,23 +37,9 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 	//do the git
 	if ( !empty( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) ){
 
-		error_log( 'Deploying ' . $data['repository']['name'] . ' to ' . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] );
-		exec( "git -C " . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] . " pull", $output );
-		if( is_array( $output ) ){
-			$output = implode("\r\n", $output );
-		}
-		// log stuff
-		error_log( $output );
+		// create git task
+		create_task( 'http_deploy', array( 'params' => array( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) ) );
 
-		// has composer?
-		if( in_array( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ], $composers) ){
-			// run composer
-			$log = array();
-			exec( "composer --no-ansi -n update -d " . $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ], $log );
-			$outlog = implode("\r\n", (array) $log );
-			error_log( $outlog );
-
-		}
 
 		return array('success' => true, 'data' => $data, 'log' => $output );
 

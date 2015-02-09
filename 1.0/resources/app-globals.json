@@ -7,7 +7,8 @@
 			"404"   : "errorpages/test-error-404.php"
 		},
 		"libraries" : [
-			"libs/remotecall.php"
+			"libs/remotecall.php",
+			"libs/utils.php"
 		]
 	}
 ]
