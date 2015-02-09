@@ -26,7 +26,7 @@ $deploy = array(
 	),
 );
 
-//
+// list of composer folders. as not to run on all gits in case.
 $composers = array(
 	'/var/sites/stage.calderawp.com/wp-content/themes/cwp-theme',
 	'/var/sites/calderawp.com/wp-content/themes/cwp-theme'
@@ -35,12 +35,18 @@ $composers = array(
 
 if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repository']['name'] ] ) ){
 
+	$path = $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ];
+
 	//do the git
-	if ( !empty( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) ){
+	if ( !empty( $path ) ){
 
 		// create git task
-		create_task( 'http_deploy', array( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) );
+		create_task( 'http_deploy', array( $path ) );
 
+		// composer task // task not there yet.
+		if( in_array( $path, $composers ) ){
+			create_task( 'http_composer_update', array( $path ) );
+		}
 
 		return array('success' => true, 'data' => $data, 'log' => $output );
 
