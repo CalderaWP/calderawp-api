@@ -38,7 +38,7 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 	if ( !empty( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) ){
 
 		// create git task
-		create_task( 'http_deploy', array( 'params' => array( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) ) );
+		create_task( 'http_deploy', array( $deploy[ $data['repository']['name'] ][ basename( $data['ref'] ) ] ) );
 
 
 		return array('success' => true, 'data' => $data, 'log' => $output );
