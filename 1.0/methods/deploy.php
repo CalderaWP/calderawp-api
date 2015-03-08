@@ -3,7 +3,7 @@
 /// DEPLOY method - ready
 $data = json_decode( file_get_contents( 'php://input' ), true );
 ob_start();
-var_dump( $data );
+echo json_encode( $_POST );
 error_log( ob_get_clean() );
 
 error_log( 'Starting deploy call' );
