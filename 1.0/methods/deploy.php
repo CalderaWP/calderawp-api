@@ -18,6 +18,7 @@ error_log( 'Starting deploy call' );
 // authorized senders
 $auths = array(
 	'Desertsnowman',
+	'dlcramer',
 	'Shelob9',
 );
 
