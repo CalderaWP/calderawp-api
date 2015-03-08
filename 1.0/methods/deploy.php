@@ -2,9 +2,16 @@
 
 /// DEPLOY method - ready
 $data = json_decode( file_get_contents( 'php://input' ), true );
-ob_start();
-echo json_encode( $_POST );
-error_log( ob_get_clean() );
+if( !empty( $_POST['payload'] ) ){
+	
+	$payload = json_decode( $_POST['payload'], true );
+
+	/// make stuff
+	$data['sender']['login'] = $payload['user'];
+	$data['repository']['name'] = $payload['repository']['name'];
+	$data['ref'] = 'bitbucket';
+
+}
 
 error_log( 'Starting deploy call' );
 
@@ -16,6 +23,9 @@ $auths = array(
 
 // allowed deployments
 $deploy = array(
+	'iron-circle'	=>	array(
+		'bitbucket'		=>	'/var/sites/stage.calderawp.com/wp-content/plugins/iron-circle',
+	),
 	'calderawp-api'	=>	array(
 		'master'		=>	'/var/api/calderawp-api',
 	),
