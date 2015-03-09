@@ -36,6 +36,7 @@ $deploy = array(
 	),
 	'cwp-shop-front'=>	array(
 		'staging'		=>	'/var/sites/stage.calderawp.com/wp-content/themes/cwp-shop-front',
+		'master'		=>	'/var/sites/calderawp.com/wp-content/themes/cwp-shop-front',
 	),
 	'Caldera-Forms'	=>	array(
 		'current-stable'	=>	'/var/sites/calderawp.com/wp-content/plugins/caldera-forms',
