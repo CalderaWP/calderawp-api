@@ -61,6 +61,8 @@ if( in_array( $data['sender']['login'], $auths ) && isset( $deploy[ $data['repos
 	}else{
 		error_log( 'Deploy Not set on ' . $data['repository']['name'] . ' for branch ' . basename( $data['ref'] ) );
 	}
+}else{
+	error_log('No authorised to deply.');
 }
 
 
