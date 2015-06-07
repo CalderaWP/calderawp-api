@@ -124,7 +124,7 @@ class products extends endpoints {
 	 *
 	 * @since 0.0.1
 	 *
-	 * @param WP_Post $post Current post object.
+	 * @param \WP_Post $post Current post object.
 	 * @param array $data Current collection of data
 	 *
 	 * @return array
@@ -147,6 +147,7 @@ class products extends endpoints {
 			'excerpt'      => $post->post_excerpt,
 			'tagline'      => get_post_meta( $post->ID, 'tagline', 'id' ),
 			'prices'       => edd_get_variable_prices( $post->ID ),
+			'slug'         => $post->post_name,
 		);
 
 		return $data;
