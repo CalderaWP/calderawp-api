@@ -64,6 +64,9 @@ class products extends endpoints {
 		if ( $params[ 'slug' ] ) {
 			$args[ 'name' ] = $params[ 'slug' ];
 			$args[ 'post_type' ] = $this->post_type;
+		}elseif( $params[ 'soon' ] ) {
+			$args[ 'meta_key' ] = 'edd_coming_soon';
+			$args[ 'meta_value' ] = true;
 		}else{
 			$args = $this->query_args( $params );
 		}
