@@ -87,7 +87,7 @@ class docs extends endpoints {
 	 *
 	 * @access protected
 	 *
-	 * @param WP_Post $post Current post object.
+	 * @param \WP_Post $post Current post object.
 	 * @param array $data Current collection of data
 	 * @param int|string||WP_Post $product Product this is a doc for. If null, the default, it will be queried for by slug or ID.
 	 *
@@ -105,6 +105,7 @@ class docs extends endpoints {
 			'content'       => $post->post_content,
 			'product_name' => null,
 			'product_link' => null,
+			'slug'         => $post->post_name,
 		);
 
 		if ( ! is_null( $product ) ) {
