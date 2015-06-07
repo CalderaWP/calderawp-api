@@ -122,6 +122,30 @@ class boot {
 		);
 
 		/**
+		 * Featured products
+		 */
+		register_rest_route( "{$root}/{$version}", '/products/featured', array(
+				array(
+					'methods'         => \WP_REST_Server::READABLE,
+					'callback'        => array( $cb_class, 'get_featured' ),
+					'args'            => array(
+						'per_page' => array(
+							'default' => 10,
+							'sanitize_callback' => 'absint',
+						),
+						'page' => array(
+							'default' => 1,
+							'sanitize_callback' => 'absint',
+						),
+					),
+
+					'permission_callback' => array( $this, 'permissions_check' )
+				),
+			)
+
+		);
+
+		/**
 		 * Docs Endpoints
 		 */
 		$base = "{$root}/{$version}/docs";
@@ -170,8 +194,6 @@ class boot {
 							'default' => 0,
 							'sanitize_callback' => 'absint',
 						),
-
-
 
 					),
 

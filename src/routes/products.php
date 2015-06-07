@@ -98,6 +98,25 @@ class products extends endpoints {
 	}
 
 	/**
+	 * Get featured plugins
+	 *
+	 * @since 0.0.1
+	 *
+	 * @param \WP_REST_Request $request Full details about the request
+	 *
+	 * @return \WP_HTTP_Response
+	 */
+	public function get_featured( $request ) {
+		$params = $request->get_params();
+		$args = $this->query_args( $params );
+		$args[ 'meta_key' ] = 'show_on_front_page';
+		$args[ 'meta_value' ] = true;
+
+		return $this->do_query( $request, $args );
+
+	}
+
+	/**
 	 * Add current post to response data for this route.
 	 *
 	 * @since 0.0.1
