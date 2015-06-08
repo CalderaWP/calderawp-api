@@ -13,7 +13,6 @@ $form = '
 <div id="mc_embed_signup">
 	<form action="//CalderaWP.us10.list-manage.com/subscribe/post?u=e8aeee202b02c1fe9eab2037c&amp;id=f402a6993d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 		<div id="mc_embed_signup_scroll">
-			<h2>Subscribe to our mailing list</h2>
 			<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
 			<div class="mc-field-group">
 				<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>

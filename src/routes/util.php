@@ -53,19 +53,29 @@ class util {
 	 * @return string
 	 */
 	protected function mailchimp() {
-		return include dirname( __FILE__ ) . '/include/mailchimp.php';
+		$data[ 'title' ] = __( 'Join Our Mailing List', 'calderawp-license-manager' );
+		$data[ 'message' ] = __( 'Get news, WordPress tricks and special saving.', 'calderawp-license-manager' );
+		$data[ 'form' ] =  include dirname( __FILE__ ) . '/include/mailchimp.php';
+
+		return $data;
 
 	}
 
 	/**
 	 * Support form.
 	 *
+	 * @todo this
+	 *
 	 * @since 0.0.1
 	 *
 	 * @return string
 	 */
 	protected function support() {
-		return include dirname( __FILE__ ) . '/include/support-form.php';
+		$data[ 'title' ] = '';
+		$data[ 'message' ] = '';
+		$data[ 'form' ] = include dirname( __FILE__ ) . '/include/support-form.php';
+
+		return $data;
 
 	}
 
