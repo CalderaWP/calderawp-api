@@ -145,7 +145,7 @@ class products extends endpoints {
 			'image_markup' => get_the_post_thumbnail( $post->ID, 'large' ),
 			'image_src'    => $image,
 			'excerpt'      => $post->post_excerpt,
-			'tagline'      => get_post_meta( $post->ID, 'tagline', true ),
+			'tagline'      => get_post_meta( $post->ID, 'product_tagline', true ),
 			'prices'       => edd_get_variable_prices( $post->ID ),
 			'slug'         => $post->post_name,
 		);
@@ -157,7 +157,7 @@ class products extends endpoints {
 				'image'
 			) as $field ) {
 				$field = "benefit_{$i}_{$field}";
-				$data[ $field ] = get_post_meta( $post->ID, $field, true );
+				$data[ $post->ID ][ $field ] = get_post_meta( $post->ID, $field, true );
 			}
 
 		}
