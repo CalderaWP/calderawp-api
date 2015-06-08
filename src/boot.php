@@ -203,6 +203,31 @@ class boot {
 
 		);
 
+		/**
+		 * Utility endpoints
+		 */
+		$cb_class = new \calderawp\calderawp_api\routes\util();
+		/**
+		 * Docs for all products or a specific product by slug/ID
+		 */
+		register_rest_route( "{$root}/{$version}", '/util', array(
+				array(
+					'methods'         => \WP_REST_Server::READABLE,
+					'callback'        => array( $cb_class, 'get_items' ),
+					'args'            => array(
+						'what' => array(
+							'default' => 'all',
+							'sanitize_callback' => 'strip_tags',
+						)
+
+					),
+
+					'permission_callback' => array( $this, 'permissions_check' )
+				),
+			)
+
+		);
+
 
 
 	}
