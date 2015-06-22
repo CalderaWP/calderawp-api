@@ -156,8 +156,28 @@ class products extends endpoints {
 				'text',
 				'image'
 			) as $field ) {
-				$field = "benefit_{$i}_{$field}";
-				$data[ $post->ID ][ $field ] = get_post_meta( $post->ID, $field, true );
+				if ( 'image' != $field ) {
+					$field                       = "benefit_{$i}_{$field}";
+					$data[ $post->ID ][ $field ] = get_post_meta( $post->ID, $field, true );
+				}else{
+					$field                       = "benefit_{$i}_{$field}";
+					$_field = get_post_meta( $post->ID, $field, true );
+					$url = false;
+
+					if ( is_array( $_field ) && isset( $_field[ 'ID' ] )) {
+						$img = $_field[ 'ID' ];
+						$img = wp_get_attachment_image_src( $img, 'large' );
+
+						if ( is_array( $img ) ) {
+
+							$url = $img[0];
+						}
+
+					}
+					$_field[ 'image_src' ] = $url;
+					$data[ $post->ID ][ $field ] = $_field;
+				}
+
 			}
 
 		}
