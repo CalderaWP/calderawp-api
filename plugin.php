@@ -3,15 +3,28 @@
 Plugin Name: CalderaWP API
  */
 add_action( 'plugins_loaded', function() {
-	if ( class_exists( 'WP_REST_Posts_Controller' ) ) {
-		if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
-			include_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
-			$api_namespace = 'calderawp_api';
+	spl_autoload_register( function ( $class ) {
+		$prefix = 'calderawp\\calderawp_api\\';
+		$base_dir = dirname( __FILE__ ) . '/src/' ;
+		$len = strlen($prefix);
+		if (strncmp($prefix, $class, $len) !== 0) {
 
-			$version = 'v2';
-			new \calderawp\calderawp_api\boot( $api_namespace, $version );
+			return;
 		}
-	}
+		$relative_class = substr($class, $len);
+		$file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+
+		if ( file_exists( $file )) {
+			require $file;
+		}
+	});
+
+
+	$api_namespace = 'calderawp_api';
+	$version = 'v2';
+	new \calderawp\calderawp_api\boot( $api_namespace, $version );
+
+
 });
 
 
