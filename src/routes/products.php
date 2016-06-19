@@ -148,6 +148,7 @@ class products extends endpoints {
 			'tagline'      => get_post_meta( $post->ID, 'product_tagline', true ),
 			'prices'       => edd_get_variable_prices( $post->ID ),
 			'slug'         => $post->post_name,
+			'cf'            => get_post_meta( $post->ID, 'cf_add_on', true ),
 		);
 
 		for ( $i = 1; $i <= 3; $i++ ) {
