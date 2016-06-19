@@ -37,11 +37,6 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 
 		$per_page = $params['per_page'];
 
-
-		if ( 20 < $per_page ) {
-			$per_page = 20;
-		}
-
 		$args = array(
 			'posts_per_page' => $per_page,
 			'paged'          => $params[ 'page' ],
