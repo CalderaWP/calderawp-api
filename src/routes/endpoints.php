@@ -69,6 +69,7 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 	 */
 	protected function do_query( $request, $args, $respond = true) {
 		$posts_query  = new \WP_Query();
+		$args[ 'post_type' ] = $this->post_type;
 		$query_result = $posts_query->query( $args );
 
 		$data = array();
@@ -106,7 +107,12 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 		$query_result = $count_query->query( $args );
 		$total_posts  = $count_query->found_posts;
 		$response->header( 'X-WP-Total', (int) $total_posts );
-		$max_pages = ceil( $total_posts / $request['per_page'] );
+		if( 0 == absint( $request[ 'per_page' ] ) ){
+			$max_pages = 1;
+		}else{
+			$max_pages = ceil( $total_posts / $request[ 'per_page' ] );
+		}
+
 		$response->header( 'X-WP-TotalPages', (int) $max_pages );
 
 

@@ -122,6 +122,32 @@ class boot {
 		);
 
 		/**
+		 * Caldera Search add-ons query
+		 */
+		register_rest_route( "{$root}/{$version}", '/products/caldera-search', array(
+				array(
+					'methods'         => \WP_REST_Server::READABLE,
+					'callback'        => array( $cb_class, 'get_caldera_search' ),
+					'permission_callback' => array( $this, 'permissions_check' )
+				),
+			)
+
+		);
+
+		/**
+		 * Caldera bundles
+		 */
+		register_rest_route( "{$root}/{$version}", '/products/cf-bundles', array(
+				array(
+					'methods'         => \WP_REST_Server::READABLE,
+					'callback'        => array( $cb_class, 'get_cf_bundles' ),
+					'permission_callback' => array( $this, 'permissions_check' )
+				),
+			)
+
+		);
+
+		/**
 		 * Featured products
 		 */
 		register_rest_route( "{$root}/{$version}", '/products/featured', array(

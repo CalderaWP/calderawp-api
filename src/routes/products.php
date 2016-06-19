@@ -101,6 +101,45 @@ class products extends endpoints {
 	}
 
 	/**
+	 * Get plugins in caldera search bundle
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param \WP_REST_Request $request Full details about the request
+	 *
+	 * @return \WP_HTTP_Response
+	 */
+	public function get_caldera_search( \WP_REST_Request $request  ) {
+		$args[ 'post__in' ] = array( 333, 3688, 1427, 4172 );
+
+		return $this->do_query( $request, $args );
+
+	}
+
+	/**
+	 * Get Caldera Forms bundle
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param \WP_REST_Request $request Full details about the request
+	 *
+	 * @return \WP_HTTP_Response
+	 */
+	public function get_cf_bundles( \WP_REST_Request $request ){
+		$bundles   = [
+			20520,
+			20518,
+			20515,
+			20521
+		];
+		$args[ 'post__in' ] = $bundles;
+
+		return $this->do_query( $request, $args );
+
+
+	}
+
+	/**
 	 * Get featured plugins
 	 *
 	 * @since 0.0.1
