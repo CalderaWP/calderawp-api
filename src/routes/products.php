@@ -88,13 +88,33 @@ class products extends endpoints {
 	public function get_cf_addons( $request ) {
 		$params = $request->get_params();
 		$args = $this->query_args( $params );
+        $category = $request[ 'category' ];
+        switch( $category ){
+            case 'tool' :
+                $category = 'developer-tool';
+                break;
+            case 'free' :
+                $category = 'free-caldera-forms-add-on';
+            break;
+            case 'payment' :
+                $category = 'payment-processers';
+            break;
+            case 'bundles' :
+            case 'bundle' :
+                $category = 'caldera-forms-bundles';
+            break;
+        }
+        if( ! in_array( $category, [ 'developer-tool', 'email', 'content-managment','free-caldera-forms-add-on', 'payment-processers', 'caldera-forms-bundles' ] ) ){
+            $category = 'all-cf-addons';
+        }
 		$args[ 'tax_query' ] = array(
 			array(
 				'taxonomy' => 'download_category',
 				'field'    => 'slug',
-				'terms'    => 'all-cf-addons',
+				'terms'    => $category,
 			),
 		);
+        var_dump( $category );exit;
 
 		return $this->do_query( $request, $args );
 

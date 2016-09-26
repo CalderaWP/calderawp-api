@@ -111,7 +111,12 @@ class boot {
 						'soon' => array(
 							'default' => 0,
 							'sanitize_callback' => 'absint',
-						)
+						),
+                        'category' => array(
+                            'default' => 'all-cf-addons',
+                            'required' => false,
+                            'sanitize_callback' => 'sanitize_text_field',
+                        )
 
 					),
 
