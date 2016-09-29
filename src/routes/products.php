@@ -114,7 +114,7 @@ class products extends endpoints {
 				'terms'    => $category,
 			),
 		);
-        var_dump( $category );exit;
+
 
 		return $this->do_query( $request, $args );
 
