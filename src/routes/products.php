@@ -232,9 +232,9 @@ class products extends endpoints {
 
 							$url = $img[0];
 						}
+						$_field[ 'image_src' ] = $url;
 
 					}
-					$_field[ 'image_src' ] = $url;
 					$data[ $post->ID ][ $field ] = $_field;
 				}
 
