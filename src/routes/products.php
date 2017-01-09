@@ -89,6 +89,7 @@ class products extends endpoints {
 		$params = $request->get_params();
 		$args = $this->query_args( $params );
         $category = $request[ 'category' ];
+
         switch( $category ){
             case 'tool' :
                 $category = 'developer-tool';
@@ -98,6 +99,15 @@ class products extends endpoints {
             break;
             case 'payment' :
                 $category = 'payment-processers';
+				//hack to make paypal show up
+				add_filter( 'calderawp_api_response_data', function( $data, $args, $class_name ){
+					if( $class_name == get_class( $this ) ){
+						$data = $this->make_data( get_post( 561 ), $data );
+					}
+					
+
+					return $data;
+				}, 20, 3 );
             break;
             case 'bundles' :
             case 'bundle' :
@@ -114,6 +124,7 @@ class products extends endpoints {
 				'terms'    => $category,
 			),
 		);
+
 
 
 		return $this->do_query( $request, $args );
@@ -188,7 +199,7 @@ class products extends endpoints {
 	 *
 	 * @return array
 	 */
-	protected function make_data( $post, $data ) {
+	protected function make_data( \WP_Post $post, $data ) {
 		$image = get_post_thumbnail_id( $post->ID );
 		if ( $image ) {
 			$_image = wp_get_attachment_image_src( $image, 'large' );
