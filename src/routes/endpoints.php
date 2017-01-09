@@ -70,6 +70,7 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 	protected function do_query( $request, $args, $respond = true) {
 		$posts_query  = new \WP_Query();
 		$args[ 'post_type' ] = $this->post_type;
+		$args = apply_filters( 'calderawp_api_wp_query_args', $args, $request, get_class( $this ) );
 		$query_result = $posts_query->query( $args );
 
 		$data = array();
