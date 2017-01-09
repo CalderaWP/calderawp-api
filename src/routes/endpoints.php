@@ -79,6 +79,8 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 			}
 		}
 
+		$data = apply_filters( 'calderawp_api_response_data', $data, $args, get_class( $this ) );
+
 		if ( $respond ) {
 			return $this->create_response( $request, $args, $data );
 		} else {
