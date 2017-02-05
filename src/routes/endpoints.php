@@ -45,6 +45,10 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 			'meta_key'       => 'order',
 		);
 
+        if( isset( $params[ 'search' ] ) ){
+            $args[ 's' ] = $params[ 'search' ];
+        }
+
 		if ( isset( $params[ 'soon' ] ) && 1 == $params[ 'soon' ] ) {
 			$args[ 'meta_key' ] = 'edd_coming_soon';
 			$args[ 'meta_value' ] = true;
@@ -118,7 +122,6 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 		}
 
 		$response->header( 'X-WP-TotalPages', (int) $max_pages );
-
 
 		if ( $request['page'] > 1 ) {
 			$prev_page = $request['page'] - 1;
