@@ -61,9 +61,7 @@ class products extends endpoints {
 	public function get_items( $request ) {
 		$params = $request->get_params();
 
-		if ( 'false' != $params[ 'product_slug' ] ) {
-			$args[ 'name' ] = $params[ 'product_slug' ];
-		}elseif( $params[ 'soon' ] ) {
+		if( $params[ 'soon' ] ) {
 			$args[ 'meta_key' ] = 'edd_coming_soon';
 			$args[ 'meta_value' ] = true;
 		}else{

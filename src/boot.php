@@ -79,10 +79,6 @@ class boot {
 							'default' => 0,
 							'sanitize_callback' => 'absint',
 						),
-						'product_slug' => array(
-							'default' => 'false',
-							'sanitize_callback' => 'sanitize_title',
-						)
 					),
 
 					'permission_callback' => array( $this, 'permissions_check' )
