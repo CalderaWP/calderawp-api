@@ -83,7 +83,6 @@ class boot {
 							'default' => false,
 							'sanitize_callback' => 'sanitize_title',
 						)
-
 					),
 
 					'permission_callback' => array( $this, 'permissions_check' )
@@ -213,12 +212,12 @@ class boot {
 							'default' => 1,
 							'sanitize_callback' => 'absint',
 						),
-						'slug' => array(
-							'default' => false,
+						'doc_slug' => array(
+							'default' => 'false',
 							'sanitize_callback' => 'sanitize_title',
 						),
 						'product_slug' => array(
-							'default' => false,
+							'default' => 'false',
 							'sanitize_callback' => 'sanitize_title',
 						),
 						'product_id' => array(

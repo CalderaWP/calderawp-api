@@ -73,7 +73,6 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 		$args = apply_filters( 'calderawp_api_wp_query_args', $args, $request, get_class( $this ) );
 
 		$query_result = $posts_query->query( $args );
-
 		$data = array();
 		if ( ! empty( $query_result ) ) {
 			foreach ( $query_result as $post ) {

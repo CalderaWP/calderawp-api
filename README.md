@@ -37,7 +37,7 @@
     * Arguments:
         * `per_page` Default: 10. # of docs per page
         * `page` Default: 1. Page #
-        * `slug` Default: false. Retrieve specific doc by slug. 
+        * `doc_slug` Default: false. Retrieve specific doc by slug. 
         * `product_slug` Default: false. Retrieve docs for product, by slug 
         * `product_id` Default: false. Retrieve docs for product, by id
         * `search` Default: false. Keyword search for docs. 
