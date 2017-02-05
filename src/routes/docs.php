@@ -60,11 +60,11 @@ class docs extends endpoints {
 	public function get_items( $request ) {
 		$params = $request->get_params();
 		$args = $this->query_args( $params );
-		if ( $params[ 'product_id' ] ) {
 
+		if ( $params[ 'product_id' ] ) {
 			$args[ 'meta_key' ] = 'product';
 			$args[ 'meta_value' ] = $params[ 'product_id' ];
-		}elseif( $params[ 'product_slug' ] ) {
+		}elseif( 'false' !== $params[ 'product_slug' ]  ) {
 			$product = $this->find_product( $params[ 'product_slug' ] );
 			if ( is_object( $product ) ) {
 				$args[ 'meta_key' ] = 'product';
@@ -72,8 +72,8 @@ class docs extends endpoints {
 			}else{
 				return new \WP_Error( 'calderawp-api-invalid-product-slug' );
 			}
-		}elseif( $params[ 'slug' ] ) {
-			$args[ 'name' ] = $params[ 'slug' ];
+		}elseif('false' !==  $params[ 'doc_slug' ] ) {
+			$args[ 'name' ] = $params[ 'doc_slug' ];
 		}
 
 		return $this->do_query( $request, $args );
@@ -144,6 +144,18 @@ class docs extends endpoints {
 
 	}
 
+
+    /**
+     * @inheritdoc
+     * @since 1.2.0
+     */
+	protected function query_args($params){
+        $params =  parent::query_args($params);
+        unset( $params[ 'meta_key' ] );
+        unset( $params[ 'orderby' ] );
+        return $params;
+
+    }
 
 
 }
