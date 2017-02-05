@@ -79,7 +79,7 @@ class boot {
 							'default' => 0,
 							'sanitize_callback' => 'absint',
 						),
-						'slug' => array(
+						'product_slug' => array(
 							'default' => false,
 							'sanitize_callback' => 'sanitize_title',
 						)

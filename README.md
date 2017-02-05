@@ -9,7 +9,7 @@
         * `per_page` Default: 10. # of products per page
         * `page` Default: 1. Page #
         * `soon` Default: false. Show coming soon products only?
-        * `slug` Default: false. Retrieve specific product by slug.
+        * `product_slug` Default: false. Retrieve specific product by slug.
         * `search` Default: false. Keyword search for products. 
 * GET `/calderawp_api/v2/products/<id>`
     * A specific product by ID

@@ -61,9 +61,8 @@ class products extends endpoints {
 	public function get_items( $request ) {
 		$params = $request->get_params();
 
-		if ( $params[ 'slug' ] ) {
-			$args[ 'name' ] = $params[ 'slug' ];
-			$args[ 'post_type' ] = $this->post_type;
+		if ( $params[ 'product_slug' ] ) {
+			$args[ 'name' ] = $params[ 'product_slug' ];
 		}elseif( $params[ 'soon' ] ) {
 			$args[ 'meta_key' ] = 'edd_coming_soon';
 			$args[ 'meta_value' ] = true;
@@ -71,6 +70,7 @@ class products extends endpoints {
 			$args = $this->query_args( $params );
 		}
 
+        $args[ 'post_type' ] = $this->post_type;
 
 		return $this->do_query( $request, $args );
 

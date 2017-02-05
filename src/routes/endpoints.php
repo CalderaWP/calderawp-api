@@ -71,6 +71,7 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 		$posts_query  = new \WP_Query();
 		$args[ 'post_type' ] = $this->post_type;
 		$args = apply_filters( 'calderawp_api_wp_query_args', $args, $request, get_class( $this ) );
+
 		$query_result = $posts_query->query( $args );
 
 		$data = array();
@@ -107,6 +108,7 @@ abstract class endpoints extends \WP_REST_Posts_Controller {
 		$response    = rest_ensure_response( $data );
 		$count_query = new \WP_Query();
 		unset( $args['paged'] );
+
 		$query_result = $count_query->query( $args );
 		$total_posts  = $count_query->found_posts;
 		$response->header( 'X-WP-Total', (int) $total_posts );

@@ -60,6 +60,7 @@ class docs extends endpoints {
 	public function get_items( $request ) {
 		$params = $request->get_params();
 		$args = $this->query_args( $params );
+
 		if ( $params[ 'product_id' ] ) {
 
 			$args[ 'meta_key' ] = 'product';
