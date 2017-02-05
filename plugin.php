@@ -1,7 +1,7 @@
 <?php
 /**
 Plugin Name: CalderaWP API
-Plugin Version: 1.2.0
+Plugin Version: 1.2.1
  */
 add_action( 'plugins_loaded', function() {
 	spl_autoload_register( function ( $class ) {
