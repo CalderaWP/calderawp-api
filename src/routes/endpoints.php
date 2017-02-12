@@ -13,6 +13,13 @@ namespace calderawp\calderawp_api\routes;
 
 
 abstract class endpoints extends \WP_REST_Posts_Controller {
+	
+	/** @var string */
+	protected $post_type;
+	
+	/** @var string */	
+	protected $base;
+	
 	/**
 	 * @param string $post_type Name of post type this route is for.
 	 * @param string $base Base URL for this API.
