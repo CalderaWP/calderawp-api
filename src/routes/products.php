@@ -156,18 +156,18 @@ class products extends endpoints {
 	 */
 	public function get_cf_bundles( \WP_REST_Request $request ){
 		$bundles   = [
-			20520,
-			20518,
-			20515,
-			20521
+			20521, //free
+			20520, //developer
+			20518, //agency
+			//20515, //unlimited (discontinued)
+			48255, //enterprise
 		];
 		$args[ 'post__in' ] = $bundles;
 
 		return $this->do_query( $request, $args );
-
-
+		
 	}
-
+	
 	/**
 	 * Get featured plugins
 	 *
