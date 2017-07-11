@@ -81,6 +81,32 @@ class docs extends endpoints {
 	}
 
 	/**
+	 * Get Important docs
+	 *
+	 * GET /docs/important
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param \WP_REST_Request $request
+	 *
+	 * @return \WP_HTTP_Response
+	 */
+	public function get_important( $request){
+		$args = array(
+			'post__in' => [
+				30815, //getting started
+				18879,//magic tags
+				33603, //emails
+				24978, //auto responders
+				53059, //condtional recipients
+			]
+		);
+
+		return $this->do_query( $request, $args );
+
+	}
+
+	/**
 	 * Add current post to response data for this route.
 	 *
 	 * @since 0.0.1
