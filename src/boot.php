@@ -229,6 +229,19 @@ class boot {
 
 		);
 
+		register_rest_route( "{$root}/{$version}", '/docs/important', array(
+				array(
+					'methods'         => \WP_REST_Server::READABLE,
+					'callback'        => array( $cb_class, 'get_important' ),
+					'args'            => array(
+					),
+
+					'permission_callback' => array( $this, 'permissions_check' )
+				),
+			)
+
+		);
+
 		/**
 		 * Utility endpoints
 		 */
